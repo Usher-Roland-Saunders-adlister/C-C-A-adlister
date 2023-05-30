@@ -77,14 +77,12 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error updating user", e);
         }
     }
-    
 
     @Override
     public void deleteUser(User user) {
         String query = "DELETE FROM users WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-          
             stmt.setLong(1, user.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -103,4 +101,5 @@ public class MySQLUsersDao implements Users {
 //            throw new RuntimeException("Error deleting user", e);
 //        }
 //    }
+
 }
