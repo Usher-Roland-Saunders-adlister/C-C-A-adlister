@@ -19,6 +19,14 @@
         </div>
     </c:forEach>
 </div>
+<form action="/SearchAdsServlet" method="GET">
+    <div class="form-group">
+        <label for="user-search">Search Ads By description ot Title</label>
+        <input id="user-search" name="user-search" class="user-search" type="text">
+    </div>
+    <input type="submit" class="btn btn-primary btn-block">
+</form>
+
 
 </body>
 </html>

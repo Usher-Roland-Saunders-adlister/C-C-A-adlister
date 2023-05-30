@@ -55,6 +55,20 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+//    @Override
+//    public List<Ad> AdSearch() {
+//        public List<Ad>searchAdsByTitleorDescription(List<Ad> ads,String title, String description){
+//            List<Ad> matchingAds = new ArrayList<>();
+//
+//            for (Ad ad : ads){
+//                if(ad.getTitle().contains(title) || ad.getDescription().contains(description)){
+//                    matchingAds.add(ad);
+//                }
+//            }
+//            return matchingAds;
+//        }
+//    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -71,4 +85,7 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+
+
 }
