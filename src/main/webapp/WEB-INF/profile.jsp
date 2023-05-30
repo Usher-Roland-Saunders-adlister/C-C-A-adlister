@@ -10,7 +10,9 @@
 
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <button onclick="window.location.href='/update'">Update</button>
     </div>
+
 
 </body>
 </html>
