@@ -3,6 +3,8 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.dao.Ads;
+import com.codeup.adlister.dao.ListAdsDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,12 +17,21 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("user") == null) {
+        String adIdString = request.getPathInfo().substring(1); // Extract the ad ID from the URL
+        long adId = Long.parseLong(adIdString);
+        Ads adsDao = new ListAdsDao();
+        Ad ad = adsDao.findById(adId);
+
+        if (ad == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND); // Return a 404 error if the ad is not found
+            return;
+        }
+        else if(request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             // add a return statement to exit out of the entire method.
             return;
         }
-
+        request.setAttribute("ad", ad);
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
 
     }
@@ -35,4 +46,6 @@ public class CreateAdServlet extends HttpServlet {
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
     }
+
+
 }

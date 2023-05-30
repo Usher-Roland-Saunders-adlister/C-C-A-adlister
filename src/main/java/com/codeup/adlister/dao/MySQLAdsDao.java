@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Override
 public class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
@@ -71,4 +72,6 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+
 }

@@ -22,6 +22,7 @@ public class ListAdsDao implements Ads {
         }
         // we'll assign an "id" here based on the size of the ads list
         // really the dao would handle this
+        long id = ads.size() + 1;
         ad.setId((long) ads.size());
         ads.add(ad);
         return ad.getId();
@@ -54,5 +55,15 @@ public class ListAdsDao implements Ads {
             "Must have strong Java skills"
         ));
         return ads;
+    }
+
+
+    public Ad findById(long id) {
+        for (Ad ad : ads) {
+            if (ad.getId() == id) {
+                return ad;
+            }
+        }
+        return null;
     }
 }
