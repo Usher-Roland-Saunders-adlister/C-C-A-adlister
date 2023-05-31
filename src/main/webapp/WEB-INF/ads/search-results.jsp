@@ -8,9 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
+    <h1>Ads your looking for</h1>
+
+    <h1>Search Results</h1>
+    <p>Search Results: ${searchResults}</p>
 
 </body>
 </html>

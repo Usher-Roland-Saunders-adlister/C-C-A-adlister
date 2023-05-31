@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,19 +52,32 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-//    @Override
-//    public List<Ad> AdSearch() {
-//        public List<Ad>searchAdsByTitleorDescription(List<Ad> ads,String title, String description){
-//            List<Ad> matchingAds = new ArrayList<>();
-//
-//            for (Ad ad : ads){
-//                if(ad.getTitle().contains(title) || ad.getDescription().contains(description)){
-//                    matchingAds.add(ad);
-//                }
-//            }
-//            return matchingAds;
-//        }
-//    }
+    @Override
+    public List<Ad> AdSearch(String userSearch) {
+//        System.out.println(userSearch);
+
+        List<Ad> matchingAds;
+
+        try {
+            String findAds = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            PreparedStatement stmt = connection.prepareStatement(findAds);
+            stmt.setString(1, "%" +userSearch+ "%");
+            stmt.setString(2, "%" +userSearch+ "%");
+
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+//                System.out.println(matchingAds);
+
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding user");
+        }
+
+
+    }
+
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(

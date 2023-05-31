@@ -19,6 +19,11 @@ public class Ad {
         this.description = description;
     }
 
+    public Ad(String title, String description) {
+    }
+
+    //new constructor used to return the title and description in the MySqlads dao
+
     public long getId() {
         return id;
     }
