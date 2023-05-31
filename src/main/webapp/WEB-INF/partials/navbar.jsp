@@ -7,7 +7,7 @@
         <ul class="nav navbar-nav navbar-right">
             <%-- Display login button if user is not logged in --%>
             <% if (session.getAttribute("user") == null) { %>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/login">Login/Register</a></li>
             <% } %>
 
             <%-- Display logout button if user is logged in --%>
