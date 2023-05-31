@@ -11,11 +11,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.jsp.jstl.core.Config;
 
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.dao.MySQLAdsDao;
-import com.codeup.adlister.dao.ListAdsDao;
-
-
+import com.codeup.adlister.dao.Ads;
+import com.codeup.adlister.models.User;
 
 
 @WebServlet(name = "ShowAdServlet", value = "/showad")
@@ -26,12 +27,12 @@ public class ShowAdServlet extends HttpServlet {
         long adId = Long.parseLong(request.getParameter("id"));
 
         // Retrieve the ad from the database using the ad id
-        AdsDao adsDao = new MySQLAdsDao(); // Replace with your actual AdsDao implementation
+        Ads adsDao = DaoFactory.getAdsDao();  // Replace with your actual AdsDao implementation
         Ad ad = adsDao.findById(adId);
 
         if (ad != null) {
             // Retrieve the user information for the ad
-            UserDao userDao = new MySQLUserDao(); // Replace with your actual UserDao implementation
+            Users userDao = DaoFactory.getUsersDao(); // Replace with your actual UserDao implementation
             User user = userDao.findById(ad.getUserId());
 
             // Set the ad and user objects as attributes in the request
