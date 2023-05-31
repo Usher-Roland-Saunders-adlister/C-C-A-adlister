@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codeup.adlister.models.Ad" %><%--
   Created by IntelliJ IDEA.
   User: coleusher
   Date: 5/31/23
@@ -14,21 +14,19 @@
     </jsp:include>
 </head>
 <body>
+<form action="/updateAd?adId=${adId}" method="POST">
+    <div class="form-group">
+        <input type="hidden" name="adId" value="${ad.id}">
 
-<div class="container">
-    <h1>Update Your Ad Information</h1>
-    <form action="/WEB-INF/updateAd" method="POST">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"></textarea>
-        </div>
-        <input type="submit" class="btn btn-block btn-primary">
-    </form>
-</div>
+        <label for="title">Title</label>
+        <input id="title" name="adTitle" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="adDescription" class="form-control" type="text"></textarea>
+    </div>
+    <input type="submit" class="btn btn-block btn-primary">
+</form>
 
 </body>
 </html>

@@ -15,8 +15,9 @@
 <jsp:include page="partials/navbar.jsp" />
 
 <div class="container">
-    <form action="/ads/delete" method="POST">
+    <form action="/deleteAd" method="POST">
     <h1>Ad Successfully Deleted!</h1>
+
     </form>
 </div>
 

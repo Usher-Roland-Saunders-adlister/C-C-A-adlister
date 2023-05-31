@@ -1,5 +1,9 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +19,15 @@ public class DeleteAdServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/deleteAd.jsp").forward(request, response);
+        Ad selectedAd = (Ad) request.getSession().getAttribute("ad");
+
+        // delete Ad
+        DaoFactory.getAdsDao().deleteAd(selectedAd);
+        request.getSession().removeAttribute("ad");
+
+
+        // Redirect to the login page after ad is deleted
+        response.sendRedirect("/profile");
     }
-}
+    }
+

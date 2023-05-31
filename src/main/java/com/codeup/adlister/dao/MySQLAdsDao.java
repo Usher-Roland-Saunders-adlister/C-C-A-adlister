@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,7 @@ public class MySQLAdsDao implements Ads {
         try {
             String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
+            stmt.setLong(1, ad.getUserId()); // Update this line to use ad.getUserId()
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
             stmt.executeUpdate();
@@ -54,6 +51,36 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+
+
+
+    private Ad extractAd(ResultSet rs) throws SQLException {
+        return new Ad(
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("title"),
+            rs.getString("description")
+        );
+    }
+
+
+    @Override
+    public Ad getAd(long adId) {
+        try {
+            String query = "SELECT * FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId); // Set the adId parameter
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return extractAd(rs);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
+        }
+        return null; // Return null if the ad is not found
+    }
+
 
     @Override
     public void updateAd(Ad ad) {
@@ -71,15 +98,21 @@ public class MySQLAdsDao implements Ads {
         }
 
     }
+// make a query to grab 1 AD by id
+    @Override
+    public void deleteAd(Ad selectedAd) {
+        try {
+            String query = "DELETE FROM ads WHERE id =?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, selectedAd.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting an ad.", e);
+        }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
-        );
     }
+
+
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();

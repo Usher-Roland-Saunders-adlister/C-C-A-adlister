@@ -1,5 +1,7 @@
 package com.codeup.adlister.dao;
 
+
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -52,6 +54,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -90,4 +93,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-}
+    }
+
+
