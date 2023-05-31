@@ -7,7 +7,7 @@ public interface Users {
     Long insert(User user);
 
     void update(User user);
-    void deleteUser(User user);
 
+    void deleteUser(User user);
 
 }

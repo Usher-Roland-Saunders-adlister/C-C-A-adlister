@@ -17,7 +17,10 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
+
     </c:forEach>
+
+    <button onclick="window.location.href='/updateAd'">Update</button>
 </div>
 
 </body>

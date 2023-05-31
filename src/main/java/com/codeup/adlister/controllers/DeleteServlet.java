@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import org.mindrot.jbcrypt.BCrypt;
@@ -21,12 +22,15 @@ public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
 
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
         // delete user
         DaoFactory.getUsersDao().deleteUser(loggedInUser);
+        request.getSession().removeAttribute("user");
+
+        // Clear the session after deleting the user
+        request.getSession().invalidate();
+
+
+        // Redirect to the login page
         response.sendRedirect("/login");
     }
 }
