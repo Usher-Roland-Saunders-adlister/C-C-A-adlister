@@ -14,7 +14,7 @@
     <div class="container">
         <h1>Welcome to Marketplace Connect!</h1>
 
-        <button class="btn btn-primary" onclick="window.location.href='/login'">Login</button>
+        <button class="btn btn-primary" id="btn" onclick="window.location.href='/login'">Login</button>
     </div>
 </body>
 </html>

@@ -1,5 +1,13 @@
 /* login.css */
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    background-image: url("https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 .container {
     max-width: 400px;
@@ -39,11 +47,13 @@ input[type="password"] {
     font-size: 16px;
     text-align: center;
     border-radius: 4px;
+    background-color: yellow;
+    color: black;
 }
 
 .btn-primary {
-    background-color: #007bff;
-    color: #fff;
+    background-color: yellow;
+    color: black;
 }
 
 .btn-primary:hover {
