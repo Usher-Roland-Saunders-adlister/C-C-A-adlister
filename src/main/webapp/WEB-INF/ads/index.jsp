@@ -39,7 +39,7 @@
 
         <form action="/SearchAdsServlet" method="GET" class="search-form">
             <div class="form-group">
-                <label for="user-search">Search Ads By Description or Title</label>
+                <label class="searchText" for="user-search">Search Ads By Description or Title</label>
                 <input id="user-search" name="user-search" class="form-control" type="text">
             </div>
             <input type="submit" class="btn" value="Search">

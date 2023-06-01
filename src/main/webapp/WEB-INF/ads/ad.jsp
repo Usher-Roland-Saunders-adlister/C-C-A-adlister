@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/view-ad.css" />
 </head>
 <body>
     <h1>This is the view clicked Ad page</h1>

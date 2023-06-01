@@ -1,6 +1,10 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    background-image: url("https://images.pexels.com/photos/8647091/pexels-photo-8647091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -12,6 +16,7 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: yellow;
 }
 
 .ad-card {
@@ -34,6 +39,9 @@ p {
 
 .search-form {
     margin-top: 20px;
+}
+.searchText{
+    color: yellow;
 }
 
 .form-group {
