@@ -19,6 +19,12 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
+
+        String register = request.getParameter("register");
+        if (register!= null && register.equals("true")) {
+            response.sendRedirect("/register");
+            return;
+        }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
@@ -39,6 +45,11 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
+            String errorMessage = "Invalid username or password.";
+            request.setAttribute("errorMessage", errorMessage);
+
         }
+
     }
+
 }

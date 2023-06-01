@@ -13,11 +13,18 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long userId, String title, String description) {
-        this.userId = userId;
-        this.title = title;
-        this.description = description;
+
+    public Ad(Long adId, String adTitle, String adDescription) {
+        this.id = adId;
+        this.title = adTitle;
+        this.description = adDescription;
     }
+
+    public Ad(String title, String description) {
+    }
+
+    //new constructor used to return the title and description in the MySqlads dao
+
 
     public long getId() {
         return id;

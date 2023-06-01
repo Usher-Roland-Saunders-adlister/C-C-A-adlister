@@ -18,7 +18,11 @@
             <p>${ad.getDescription()}</p>
         </div>
     </c:forEach>
-</div>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
 
+        <button onclick="window.location.href='/update'">Update</button>
+        <button onclick="window.location.href='/delete'">Delete</button>
+        <button onclick="window.location.href='/ads/create'">Create Ad</button>
+</div>
 </body>
 </html>

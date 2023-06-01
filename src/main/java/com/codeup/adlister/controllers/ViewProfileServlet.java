@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.Ads;
+
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
@@ -33,4 +34,20 @@ public class ViewProfileServlet extends HttpServlet {
         // Forward the request to the profile.jsp page
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
+
+
+    // let users create an ad and post it to their profile page
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User loggedInUser = (User) request.getSession().getAttribute("user");
+        Ad ad = new Ad(
+                loggedInUser.getId(),
+                request.getParameter("title"),
+                request.getParameter("description")
+        );
+        DaoFactory.getAdsDao().insert(ad);
+        response.sendRedirect("/profile");
+
+    }
+
+
 }
