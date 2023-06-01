@@ -66,4 +66,9 @@ public class ListAdsDao implements Ads {
         }
         return null;
     }
+
+    @Override
+    public List<Ad> findByUserId(long id) {
+        return null;
+    }
 }

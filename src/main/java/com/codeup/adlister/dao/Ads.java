@@ -12,4 +12,6 @@ public interface Ads {
 
 
     Ad findById(long id);
+
+    List<Ad> findByUserId(long id);
 }

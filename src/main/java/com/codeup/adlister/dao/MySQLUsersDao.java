@@ -73,13 +73,14 @@ public class MySQLUsersDao implements Users {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Users user = new User(
+                Users user = (Users) new User(
                         rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("description")
 
                 );
 
+                User ad = null;
                 return ad;
             }
         } catch (SQLException e) {

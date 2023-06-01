@@ -25,11 +25,12 @@ public class ViewProfileServlet extends HttpServlet {
 
         // Retrieve the user's ads from the database
         Ads adsDao = DaoFactory.getAdsDao();
-        List<Ad> userAds = Ads.findById(user.getId());
+        List<Ad> userAds = adsDao.findByUserId(user.getId());
 
         // Set the user's ads as an attribute in the request
         request.setAttribute("userAds", userAds);
 
+        // Forward the request to the profile.jsp page
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 }
