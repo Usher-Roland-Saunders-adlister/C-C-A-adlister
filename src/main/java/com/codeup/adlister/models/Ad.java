@@ -13,11 +13,13 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long userId, String title, String description) {
-        this.userId = userId;
-        this.title = title;
-        this.description = description;
+
+    public Ad(Long adId, String adTitle, String adDescription) {
+        this.id = adId;
+        this.title = adTitle;
+        this.description = adDescription;
     }
+
 
     public long getId() {
         return id;

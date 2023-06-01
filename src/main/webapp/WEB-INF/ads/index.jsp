@@ -17,7 +17,9 @@
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
+
     </c:forEach>
+
 </div>
 
 </body>

@@ -1,5 +1,7 @@
 package com.codeup.adlister.dao;
 
+
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -52,6 +54,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -77,14 +80,12 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error updating user", e);
         }
     }
-    
 
     @Override
     public void deleteUser(User user) {
         String query = "DELETE FROM users WHERE id = ?";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-          
+            PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, user.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -92,15 +93,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    //    @Override
-//    public void delete(User user) {
-//        String query = "DELETE FROM users WHERE id =?";
-//        try {
-//            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-//            stmt.setLong(1, user.getId());
-//            stmt.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error deleting user", e);
-//        }
-//    }
-}
+    }
+
+

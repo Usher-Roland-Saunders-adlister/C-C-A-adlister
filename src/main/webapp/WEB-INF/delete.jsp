@@ -11,6 +11,8 @@
 <jsp:include page="partials/navbar.jsp" />
 <form action="/delete" method="POST">
 <h1>Successfully Deleted Your Profile!</h1>
+    <br>
+    <input type="submit" class="btn btn-primary btn-block" value="Return to Login">
 </form>
 
 </body>
