@@ -5,6 +5,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+
+    <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -26,19 +29,21 @@
 <%--        </div>--%>
 <%--    </c:forEach>--%>
 <%--</div>--%>
-    <c:forEach var="ad" items="${ads}">
-    <div class="col-md-6">
-        <h2><a href="/ShowAdServlet?id=${ad.id}">${ad.title}</a></h2>
-        <p>${ad.description}</p>
-    </div>
-    </c:forEach>
-<form action="/SearchAdsServlet" method="GET">
-    <div class="form-group">
-        <label for="user-search">Search Ads By description or Title</label>
-        <input id="user-search" name="user-search" class="user-search" type="text">
-    </div>
-    <input type="submit" class="btn btn-primary btn-block">
-</form>
+
+        <c:forEach var="ad" items="${ads}">
+        <div class="ad-card">
+            <h2><a href="/ShowAdServlet?id=${ad.id}">${ad.title}</a></h2>
+            <p>${ad.description}</p>
+        </div>
+        </c:forEach>
+
+        <form action="/SearchAdsServlet" method="GET" class="search-form">
+            <div class="form-group">
+                <label class="searchText" for="user-search">Search Ads By Description or Title</label>
+                <input id="user-search" name="user-search" class="form-control" type="text">
+            </div>
+            <input type="submit" class="btn" value="Search">
+        </form>
 
 
 </body>
