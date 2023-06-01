@@ -14,8 +14,8 @@ public class Ad {
     }
 
 
-    public Ad(Long adId, String adTitle, String adDescription) {
-        this.id = adId;
+    public Ad(Long userId, String adTitle, String adDescription) {
+        this.userId = userId;
         this.title = adTitle;
         this.description = adDescription;
     }
