@@ -20,6 +20,8 @@ public class ViewProfileServlet extends HttpServlet {
         }
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
+
+
     // let users create an ad and post it to their profile page
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");

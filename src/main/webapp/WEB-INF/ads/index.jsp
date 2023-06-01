@@ -16,9 +16,6 @@
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
-                <%--THIS NEEDS TO BE ATTACHED TO EACH THE PROFILE ADs--%>
-            <button onclick="window.location.href='/updateAd?adId=123'">Update</button>
-            <button onclick="window.location.href='/deleteAd'">Delete</button>
         </div>
 
     </c:forEach>

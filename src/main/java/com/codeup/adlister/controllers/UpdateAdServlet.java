@@ -26,6 +26,7 @@ public class UpdateAdServlet extends HttpServlet {
 
         try {
             long adId = Long.parseLong(adIdParameter);
+            System.out.println(adId);
 
             // Get the ad from the database
             Ad selectedAd = DaoFactory.getAdsDao().getAd(adId);
