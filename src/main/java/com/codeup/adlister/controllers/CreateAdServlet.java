@@ -16,13 +16,16 @@ public class CreateAdServlet extends HttpServlet {
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             if (request.getSession().getAttribute("user") == null) {
+                String desiredPage = "/ads/create";
+                request.getSession().setAttribute("desiredPage", desiredPage);
+
                 response.sendRedirect("/login");
                 return;
             }
 
-            request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-                    .forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
         }
+
 
 
 
