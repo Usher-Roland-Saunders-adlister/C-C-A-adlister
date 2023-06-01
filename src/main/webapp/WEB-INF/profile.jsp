@@ -16,13 +16,19 @@
         <div class="col-md-6">
             <h2>${ad.getTitle()}</h2>
             <p>${ad.getDescription()}</p>
+            <form action="/updateAd" method="GET">
+                <button class="updateAd" id="updateBtn" name="updateBtn" value=${ad.id}>Edit</button>
+                <button class="deleteAd" id="deleteBtn" name="deleteBtn" value=${ad.id}>Delete</button>
+            </form>
         </div>
     </c:forEach>
 
-
-        <button onclick="window.location.href='/update'">Update</button>
+<div class="profile-buttons" id="profile-buttons">
+        <button onclick="window.location.href='/update'">Edit</button>
         <button onclick="window.location.href='/delete'">Delete</button>
         <button onclick="window.location.href='/ads/create'">Create Ad</button>
+</div>
+
 </div>
 </body>
 </html>
