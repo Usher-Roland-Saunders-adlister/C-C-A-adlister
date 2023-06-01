@@ -21,10 +21,15 @@ public class LoginServlet extends HttpServlet {
         }
 
         String register = request.getParameter("register");
-        if (register!= null && register.equals("true")) {
+        if (register != null && register.equals("true")) {
             response.sendRedirect("/register");
             return;
         }
+
+
+        String redirect = request.getParameter("redirect");
+        request.setAttribute("redirect", redirect);
+
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
@@ -42,14 +47,15 @@ public class LoginServlet extends HttpServlet {
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+
+            String redirect = (String) request.getSession().getAttribute("desiredPage");
+            if (redirect != null && !redirect.isEmpty()) {
+                response.sendRedirect(redirect);
+            } else {
+                response.sendRedirect("/profile");
+            }
         } else {
-            response.sendRedirect("/login");
-            String errorMessage = "Invalid username or password.";
-            request.setAttribute("errorMessage", errorMessage);
-
+            response.sendRedirect("/login?error=1");
         }
-
     }
-
 }
