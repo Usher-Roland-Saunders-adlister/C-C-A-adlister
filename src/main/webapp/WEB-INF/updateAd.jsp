@@ -14,9 +14,9 @@
     </jsp:include>
 </head>
 <body>
-<form action="/updateAd?adId=${adId}" method="POST">
+<form action="/updateAd" method="POST">
     <div class="form-group">
-        <input type="hidden" name="adId" value="${ad.id}">
+        <input type="hidden" name="adId" value="${adId}">
 
         <label for="title">Title</label>
         <input id="title" name="adTitle" class="form-control" type="text">

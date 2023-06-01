@@ -68,18 +68,28 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Ad getAd(long adId) {
         try {
-            String query = "SELECT * FROM ads WHERE id = ?";
+                     String query = "SELECT * FROM ads WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setLong(1, adId); // Set the adId parameter
+            stmt.setLong(1, adId);
             ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
-                return extractAd(rs);
+                long id = rs.getLong("id");
+                long userId = rs.getLong("user_id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                return new Ad(id, userId, title, description);
             }
+
+            // If no ad is found, return null
+            return null;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving an ad.", e);
+            // Handle any potential exceptions
+            e.printStackTrace();
+            return null;
         }
-        return null; // Return null if the ad is not found
     }
+
 
 
     @Override
