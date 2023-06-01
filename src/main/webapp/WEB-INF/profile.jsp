@@ -5,11 +5,18 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <link rel="stylesheet" type="text/css" href="/CSS/profile.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
+    <div class="profile-buttons" id="profile-buttons">
+        <button onclick="window.location.href='/update'">Edit Profile</button>
+        <button onclick="window.location.href='/delete'">Delete Profile</button>
+        <button onclick="window.location.href='/ads/create'">Create New Ad</button>
+    </div>
+
     <h1>Here are all your ads ${sessionScope.user.username}!</h1>
 
     <c:forEach var="ad" items="${userAds}">
@@ -22,13 +29,6 @@
             </form>
         </div>
     </c:forEach>
-
-<div class="profile-buttons" id="profile-buttons">
-        <button onclick="window.location.href='/update'">Edit</button>
-        <button onclick="window.location.href='/delete'">Delete</button>
-        <button onclick="window.location.href='/ads/create'">Create Ad</button>
-</div>
-
 </div>
 </body>
 </html>

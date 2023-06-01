@@ -5,11 +5,16 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
+
+    <link rel="stylesheet" type="text/css" href="/CSS/home.css">
+
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+        <h1>Welcome to Marketplace Connect!</h1>
+
+        <button class="btn btn-primary" onclick="window.location.href='/login'">Login</button>
     </div>
 </body>
 </html>
