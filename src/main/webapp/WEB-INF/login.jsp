@@ -6,8 +6,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
+
+    <link rel="stylesheet" type="text/css" href="/CSS/login.css">
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Please Log In</h1>
@@ -22,6 +25,7 @@
         </div>
         <div>
             <input type="hidden" name="redirect" value="${redirect}">
+
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </div>
     </form>

@@ -23,9 +23,11 @@ public interface Ads {
 
 
 
-    void deleteAd(Ad selectedAd);
+    void deleteAd(Long id);
 
     Ad getAd(long adId);
 
     void updateAd(Ad ad);
+
+    Ad selectAdById(Long aLong);
 }
