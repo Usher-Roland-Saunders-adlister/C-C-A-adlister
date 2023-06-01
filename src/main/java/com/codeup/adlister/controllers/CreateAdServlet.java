@@ -14,17 +14,17 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
 
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            if (request.getSession().getAttribute("user") == null) {
-                String desiredPage = "/ads/create";
-                request.getSession().setAttribute("desiredPage", desiredPage);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            String desiredPage = "/ads/create";
+            request.getSession().setAttribute("desiredPage", desiredPage);
 
-                response.sendRedirect("/login");
-                return;
-            }
-
-            request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
+            response.sendRedirect("/login");
+            return;
         }
+
+        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
+    }
 
 
 
@@ -33,9 +33,9 @@ public class CreateAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
-            loggedInUser.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
+                loggedInUser.getId(),
+                request.getParameter("title"),
+                request.getParameter("description")
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
