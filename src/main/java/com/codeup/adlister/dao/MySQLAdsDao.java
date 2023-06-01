@@ -65,6 +65,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
     public List<Ad> AdSearch(String userSearch) {
 //        System.out.println(userSearch);
 
@@ -145,19 +146,33 @@ public class MySQLAdsDao implements Ads {
         }
 
     }
-// make a query to grab 1 AD by id
-    @Override
-    public void deleteAd(Ad selectedAd) {
-        try {
-            String query = "DELETE FROM ads WHERE id =?";
-            PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setLong(1, selectedAd.getId());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error deleting an ad.", e);
-        }
 
+    @Override
+    public Ad selectAdById(Long id) {
+        try {
+            String selectQuery = "SELECT * FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(selectQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return extractAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error selecting ad by id", e);
+        }
     }
+
+
+    // make a query to grab 1 AD by id
+public void deleteAd (Long id){
+    try {
+        String deleteQuery = "DELETE FROM ads WHERE id = ?";
+        PreparedStatement stmt = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+        stmt.setLong(1, id);
+        stmt.execute();
+    } catch (SQLException e) {
+        throw new RuntimeException("Error deleting ad.");
+    }
+}
 
 
 
