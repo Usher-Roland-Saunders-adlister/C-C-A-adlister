@@ -52,6 +52,31 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> AdSearch(String userSearch) {
+//        System.out.println(userSearch);
+
+        List<Ad> matchingAds;
+
+        try {
+            String findAds = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            PreparedStatement stmt = connection.prepareStatement(findAds);
+            stmt.setString(1, "%" +userSearch+ "%");
+            stmt.setString(2, "%" +userSearch+ "%");
+
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+//                System.out.println(matchingAds);
+
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding user");
+        }
+
+
+    }
+
 
 
 
@@ -130,5 +155,31 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    @Override
+    public Ad findById(long id) {
+        try {
+            String query = "SELECT * FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Ad ad = new Ad(
+                        rs.getLong("id"),
+                        rs.getString("title"),
+                        rs.getString("description")
+
+                );
+
+                return ad;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 }

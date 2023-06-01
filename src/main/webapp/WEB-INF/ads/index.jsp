@@ -12,15 +12,34 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
+<%--    <c:forEach var="ad" items="${ads}">--%>
+<%--        <div class="col-md-6">--%>
+<%--            <h2><a href=“ads/ad?id=${ad.id}“>${ad.title}</a></h2>--%>
+<%--            <p>${ad.description}</p>--%>
+
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--    <c:forEach var="ad" items="${ads}">--%>
+<%--        <div class="col-md-6">--%>
+<%--            <h2><a href="${"/WEB-INF/ads/ad"}?id=${ad.id}">${ad.title}</a></h2>--%>
+<%--            <p>${ad.description}</p>--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
+<%--</div>--%>
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
-        </div>
-
+    <div class="col-md-6">
+        <h2><a href="/ShowAdServlet?id=${ad.id}">${ad.title}</a></h2>
+        <p>${ad.description}</p>
+    </div>
     </c:forEach>
+<form action="/SearchAdsServlet" method="GET">
+    <div class="form-group">
+        <label for="user-search">Search Ads By description or Title</label>
+        <input id="user-search" name="user-search" class="user-search" type="text">
+    </div>
+    <input type="submit" class="btn btn-primary btn-block">
+</form>
 
-</div>
 
 </body>
 </html>
