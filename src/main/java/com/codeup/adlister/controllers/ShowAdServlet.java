@@ -1,5 +1,4 @@
 package com.codeup.adlister.controllers;
-
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.Users;
@@ -23,12 +22,6 @@ public class ShowAdServlet extends HttpServlet {
 
         request.getRequestDispatcher("/WEB-INF/ads/ad.jsp").forward(request, response);
 
-
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
