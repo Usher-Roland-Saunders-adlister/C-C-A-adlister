@@ -30,7 +30,7 @@ public class UpdateServlet extends HttpServlet {
         boolean inputHasErrors = username.isEmpty()
                 || email.isEmpty()
                 || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+                || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             response.sendRedirect("/update");
@@ -38,7 +38,12 @@ public class UpdateServlet extends HttpServlet {
         }
 
         // update user
-        DaoFactory.getUsersDao().update(new User(loggedInUser.getId(), username, email, Password.hash(password)));
+        User updatedUser = new User(loggedInUser.getId(), username, email, Password.hash(password));
+        DaoFactory.getUsersDao().update(updatedUser);
+
+        // Update the session attribute with the new username
+        request.getSession().setAttribute("user", updatedUser);
+
         response.sendRedirect("/profile");
     }
 }
