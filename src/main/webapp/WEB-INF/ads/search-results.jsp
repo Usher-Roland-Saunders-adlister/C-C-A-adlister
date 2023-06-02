@@ -10,6 +10,7 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/CSS/search-result.css" />
 </head>
 <body>
     <h1>Ads your looking for</h1>
