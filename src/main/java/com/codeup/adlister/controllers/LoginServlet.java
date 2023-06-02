@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
             if (redirect != null && !redirect.isEmpty()) {
                 response.sendRedirect(redirect);
             } else {
-                response.sendRedirect("/profile");
+                response.sendRedirect("/ads/create");
             }
         } else {
             response.sendRedirect("/login?error=1");
