@@ -44,6 +44,7 @@ p {
     margin-top: 20px;
 }
 
+
 .deleteAd{
     display: inline-block;
     padding: 8px 16px;
@@ -90,4 +91,5 @@ p {
 .profile-buttons button:hover {
     background-color: #0069d9;
 }
+
 

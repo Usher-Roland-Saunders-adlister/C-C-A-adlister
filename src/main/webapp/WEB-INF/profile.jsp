@@ -16,6 +16,10 @@
     <button onclick="window.location.href='/ads/create'">Create New Ad</button>
 </div>
 
+<div class="profile-buttons" id="profile-buttons">
+    <button onclick="window.location.href='/ads'">View All Ads</button>
+</div>
+
 <h1>Welcome ${sessionScope.user.username}! Here are all your ads</h1>
 
 

@@ -15,6 +15,8 @@
         <h1>Welcome to Marketplace Connect!</h1>
 
         <button class="btn btn-primary" id="btn" onclick="window.location.href='/login'">Login</button>
+        <br>
+        <button class="btn btn-primary" id="btn" onclick="window.location.href='/ads'">View All Ads</button>
     </div>
 </body>
 </html>
