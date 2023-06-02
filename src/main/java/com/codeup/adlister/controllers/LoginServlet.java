@@ -3,7 +3,6 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
-import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +25,8 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-
         String redirect = request.getParameter("redirect");
-        request.setAttribute("redirect", redirect);
+        request.getSession().setAttribute("redirect", redirect);
 
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
@@ -48,11 +46,12 @@ public class LoginServlet extends HttpServlet {
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
 
-            String redirect = (String) request.getSession().getAttribute("desiredPage");
+            String redirect = (String) request.getSession().getAttribute("redirect");
             if (redirect != null && !redirect.isEmpty()) {
                 response.sendRedirect(redirect);
+                request.getSession().removeAttribute("redirect"); // Remove the redirect attribute from the session
             } else {
-                response.sendRedirect("/ads/create");
+                response.sendRedirect("/profile");
             }
         } else {
             response.sendRedirect("/login?error=1");

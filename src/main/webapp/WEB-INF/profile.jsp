@@ -26,8 +26,7 @@
             <h2><a href="/ShowAdServlet?id=${ad.id}">${ad.title}</a></h2>
             <p>${ad.description}</p>
 
-            <h2>${ad.getTitle()}</h2>
-            <p>${ad.getDescription()}</p>
+
             <form action="/updateAd" method="GET">
                 <button class="updateAd" id="updateBtn" name="updateBtn" value=${ad.id}>Edit</button>
                 <button class="deleteAd" id="deleteBtn" name="deleteBtn" value=${ad.id}>Delete</button>

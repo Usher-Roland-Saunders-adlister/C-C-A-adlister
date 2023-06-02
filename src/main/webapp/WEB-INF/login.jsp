@@ -25,7 +25,6 @@
         </div>
         <div>
             <input type="hidden" name="redirect" value="${redirect}">
-
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </div>
     </form>
@@ -34,5 +33,4 @@
     </form>
 </div>
 </body>
-
 </html>

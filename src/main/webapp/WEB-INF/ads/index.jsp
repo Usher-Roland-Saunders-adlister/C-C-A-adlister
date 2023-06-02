@@ -29,7 +29,7 @@
 <%--        </div>--%>
 <%--    </c:forEach>--%>
 <%--</div>--%>
-
+    <button onclick="window.location.href='/profile'">Profile</button>
         <c:forEach var="ad" items="${ads}">
         <div class="ad-card">
             <h2><a href="/ShowAdServlet?id=${ad.id}">${ad.title}</a></h2>

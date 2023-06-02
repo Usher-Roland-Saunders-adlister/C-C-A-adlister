@@ -8,6 +8,7 @@
 <body>
     <div class="container">
         <h1>Create a new Ad</h1>
+        <button onclick="window.location.href='/profile'">Profile</button>
         <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -18,6 +19,7 @@
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
+
         </form>
     </div>
 </body>
